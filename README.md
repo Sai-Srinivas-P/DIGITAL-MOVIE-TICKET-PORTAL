@@ -1,5 +1,14 @@
 <p align="center">
-  <img src="assets/movie-portal-hero.svg" alt="Digital Movie Ticket Portal hero graphic" width="100%" />
+  <img src="assets/cinema-showcase.svg" alt="Animated cinema showcase for the Digital Movie Ticket Portal" width="100%" />
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Java-17-111827?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java 17" />
+  <img src="https://img.shields.io/badge/Spring%20Boot-2.7.3-111827?style=for-the-badge&logo=springboot&logoColor=white" alt="Spring Boot 2.7.3" />
+  <img src="https://img.shields.io/badge/AngularJS-1.6.9-111827?style=for-the-badge&logo=angularjs&logoColor=white" alt="AngularJS 1.6.9" />
+  <img src="https://img.shields.io/badge/JSP-Frontend-111827?style=for-the-badge" alt="JSP frontend" />
+  <img src="https://img.shields.io/badge/H2-In--Memory-111827?style=for-the-badge" alt="H2 database" />
+  <img src="https://img.shields.io/badge/MIT-License-111827?style=for-the-badge" alt="MIT License" />
 </p>
 
 <p align="center">
@@ -34,6 +43,19 @@ The previous README described the frontend as ReactJS, but **there is no React a
 - `src/main/webapp/css/stylesheet.css`
 
 That distinction is important for anyone cloning and running the project.
+
+<p align="center">
+  <img src="assets/booking-matrix.svg" alt="Animated-style booking state visual" width="100%" />
+</p>
+
+<details>
+<summary><strong>🎟️ See the booking journey at a glance</strong></summary>
+
+```text
+Movie → Date → Theatre → Show → Seats → Booking validation → Seat status update
+```
+
+</details>
 
 ## 🍿 Core experience
 
@@ -89,6 +111,10 @@ The scheduler:
 - marks shows as running or completed based on the current date/time.
 
 The repository also contains a seeded `Movie5` / `Theatre5` record in `data.sql` with a small **15-seat** layout for initial database content.
+
+<p align="center">
+  <img src="assets/architecture-neon.svg" alt="Digital Movie Ticket Portal architecture" width="100%" />
+</p>
 
 ## 🏗️ Architecture
 
