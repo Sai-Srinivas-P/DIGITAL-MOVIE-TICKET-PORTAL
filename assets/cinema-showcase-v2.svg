@@ -17,10 +17,10 @@
 </g>
 
 <!-- SAFE TEXT ZONE: title and subtitle -->
-<text x="55" y="58" fill="#f6f7fb" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="700">
+<text x="315" y="58" fill="#f6f7fb" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="700">
   DIGITAL MOVIE TICKET PORTAL
 </text>
-<text x="55" y="88" fill="#aeb9ce" font-family="Arial,Helvetica,sans-serif" font-size="15">
+<text x="316" y="88" fill="#aeb9ce" font-family="Arial,Helvetica,sans-serif" font-size="15">
   Spring Boot · JSP · AngularJS · H2 · theatre + show + seat booking
 </text>
 
