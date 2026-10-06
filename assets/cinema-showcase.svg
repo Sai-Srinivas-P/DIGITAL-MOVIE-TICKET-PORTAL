@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#070b18"/><stop offset=".55" stop-color="#11152e"/><stop offset="1" stop-color="#1d0d2b"/></linearGradient>
+  <linearGradient id="pink" x1="0" x2="1"><stop stop-color="#ff4fa3"/><stop offset="1" stop-color="#ff7b54"/></linearGradient>
+  <linearGradient id="cyan" x1="0" x2="1"><stop stop-color="#55e6ff"/><stop offset="1" stop-color="#6b7cff"/></linearGradient>
+  <filter id="glow"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect width="1200" height="520" rx="30" fill="url(#bg)"/>
+<g opacity=".16" stroke="#7890b6">
+  <path d="M40 120H1160M40 190H1160M40 260H1160M40 330H1160M40 400H1160"/>
+  <path d="M140 50V470M260 50V470M380 50V470M500 50V470M620 50V470M740 50V470M860 50V470M980 50V470M1100 50V470"/>
+</g>
+<text x="55" y="62" fill="#f6f7fb" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="700">DIGITAL MOVIE TICKET PORTAL</text>
+<text x="56" y="93" fill="#aeb9ce" font-family="Arial,Helvetica,sans-serif" font-size="15">Spring Boot · JSP · AngularJS · H2 · theatre + show + seat booking</text>
+
+<!-- marquee -->
+<rect x="55" y="120" width="1090" height="54" rx="14" fill="#0e1630" stroke="#313a61"/>
+<text x="76" y="154" fill="#ff67ad" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700">NOW SHOWING</text>
+<text x="230" y="154" fill="#eef3ff" font-family="Arial,Helvetica,sans-serif" font-size="16">Browse → Theatre → Showtime → Seats → Book</text>
+<circle cx="1080" cy="147" r="8" fill="#ff67ad" filter="url(#glow)">
+  <animate attributeName="r" values="7;16;7" dur="1.4s" repeatCount="indefinite"/>
+  <animate attributeName="opacity" values="1;.2;1" dur="1.4s" repeatCount="indefinite"/>
+</circle>
+
+<!-- film reel -->
+<g transform="translate(95 205)">
+  <circle cx="105" cy="105" r="94" fill="#0b1226" stroke="#ff67ad" stroke-width="5"/>
+  <circle cx="105" cy="105" r="43" fill="none" stroke="#ff67ad" stroke-width="5"/>
+  <g fill="#151e39" stroke="#55e6ff" stroke-width="4">
+    <circle cx="105" cy="32" r="17"/><circle cx="175" cy="105" r="17"/><circle cx="105" cy="178" r="17"/><circle cx="35" cy="105" r="17"/>
+  </g>
+  <path d="M105 12V198M12 105H198" stroke="#2d3b63" stroke-width="2" opacity=".7"/>
+  <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 105 105" to="360 105 105" dur="9s" repeatCount="indefinite"/>
+</g>
+
+<!-- ticket -->
+<g transform="translate(275 211)">
+  <rect x="0" y="0" width="320" height="86" rx="18" fill="#111a33" stroke="url(#pink)" stroke-width="3"/>
+  <path d="M220 0V86" stroke="#394363" stroke-dasharray="6 8"/>
+  <text x="24" y="31" fill="#ff67ad" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700">MOVIE TICKET</text>
+  <text x="24" y="57" fill="#f4f6fb" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="700">Movie + Show + Seat</text>
+  <g transform="translate(240 18)" fill="#55e6ff">
+    <rect x="0" y="0" width="5" height="50"/><rect x="10" y="0" width="3" height="50"/><rect x="18" y="0" width="6" height="50"/><rect x="30" y="0" width="3" height="50"/><rect x="38" y="0" width="7" height="50"/>
+  </g>
+</g>
+
+<!-- seat matrix -->
+<g transform="translate(680 205)">
+  <rect x="0" y="0" width="450" height="230" rx="18" fill="#0d162d" stroke="#2c3a61"/>
+  <text x="24" y="32" fill="#55e6ff" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="700">SEAT MAP</text>
+  <text x="335" y="32" fill="#9eacc5" font-family="Arial,Helvetica,sans-serif" font-size="12">LIVE STATE</text>
+  <g transform="translate(30 54)">
+    <g id="row1">
+      <rect x="0" y="0" width="34" height="24" rx="6" fill="#42d8ad"/><rect x="46" y="0" width="34" height="24" rx="6" fill="#42d8ad"/><rect x="92" y="0" width="34" height="24" rx="6" fill="#ff5e76"/><rect x="138" y="0" width="34" height="24" rx="6" fill="#42d8ad"/><rect x="184" y="0" width="34" height="24" rx="6" fill="#8b97aa"/><rect x="230" y="0" width="34" height="24" rx="6" fill="#42d8ad"/>
+      <rect x="0" y="40" width="34" height="24" rx="6" fill="#8b97aa"/><rect x="46" y="40" width="34" height="24" rx="6" fill="#42d8ad"/><rect x="92" y="40" width="34" height="24" rx="6" fill="#42d8ad"/><rect x="138" y="40" width="34" height="24" rx="6" fill="#ff5e76"/><rect x="184" y="40" width="34" height="24" rx="6" fill="#42d8ad"/><rect x="230" y="40" width="34" height="24" rx="6" fill="#42d8ad"/>
+      <rect x="0" y="80" width="34" height="24" rx="6" fill="#42d8ad"/><rect x="46" y="80" width="34" height="24" rx="6" fill="#42d8ad"/><rect x="92" y="80" width="34" height="24" rx="6" fill="#8b97aa"/><rect x="138" y="80" width="34" height="24" rx="6" fill="#42d8ad"/><rect x="184" y="80" width="34" height="24" rx="6" fill="#ff5e76"/><rect x="230" y="80" width="34" height="24" rx="6" fill="#42d8ad"/>
+      <rect x="0" y="120" width="34" height="24" rx="6" fill="#42d8ad"/><rect x="46" y="120" width="34" height="24" rx="6" fill="#8b97aa"/><rect x="92" y="120" width="34" height="24" rx="6" fill="#42d8ad"/><rect x="138" y="120" width="34" height="24" rx="6" fill="#42d8ad"/><rect x="184" y="120" width="34" height="24" rx="6" fill="#42d8ad"/><rect x="230" y="120" width="34" height="24" rx="6" fill="#ff5e76"/>
+    </g>
+    <g opacity=".9" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#b9c4d8"><text x="280" y="15">Available</text><rect x="350" y="7" width="12" height="12" rx="3" fill="#42d8ad"/><text x="280" y="50">Selected</text><rect x="350" y="42" width="12" height="12" rx="3" fill="#ff5e76"/><text x="280" y="85">Booked</text><rect x="350" y="77" width="12" height="12" rx="3" fill="#8b97aa"/></g>
+  </g>
+  <rect x="30" y="201" width="390" height="3" fill="url(#cyan)" opacity=".7">
+    <animate attributeName="x" values="30;120;30" dur="2.4s" repeatCount="indefinite"/>
+  </rect>
+</g>
+
+<!-- flow -->
+<g transform="translate(60 462)" font-family="Arial,Helvetica,sans-serif">
+  <text x="0" y="0" fill="#f2f5ff" font-size="13">ACTIVE SHOWS</text>
+  <g transform="translate(120 -15)" fill="none" stroke="#475575" stroke-width="3">
+    <path d="M0 0H875"/>
+  </g>
+  <g fill="#55e6ff" filter="url(#glow)">
+    <circle cx="200" cy="-15" r="7"><animate attributeName="cx" values="200;975;200" dur="4s" repeatCount="indefinite"/></circle>
+  </g>
+</g>
+</svg>
