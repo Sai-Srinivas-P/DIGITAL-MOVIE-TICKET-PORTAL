@@ -1,27 +1,35 @@
-<p align="center">
-  <img src="assets/cinema-showcase-v3.svg" alt="Animated cinema showcase for the Digital Movie Ticket Portal" width="100%" />
-</p>
+# 🎞️ DIGITAL MOVIE TICKET PORTAL
+
+<table>
+<tr>
+<td width="72%">
+
+## THE SHOW STARTS HERE
+
+**Spring Boot 2.7.3 · Java 17 · JSP · AngularJS 1.6.9 · H2**
+
+A compact movie-booking prototype for selecting a movie, theatre, show, and seats, with scheduled show-state updates.
+
+</td>
+<td width="28%">
+
+**ENTRY**<br/><code>/home</code><br/><br/>
+**PORT**<br/><code>8080</code><br/><br/>
+**DB**<br/><code>H2 / memory</code>
+
+</td>
+</tr>
+</table>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Java-17-111827?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java 17" />
-  <img src="https://img.shields.io/badge/Spring%20Boot-2.7.3-111827?style=for-the-badge&logo=springboot&logoColor=white" alt="Spring Boot 2.7.3" />
-  <img src="https://img.shields.io/badge/AngularJS-1.6.9-111827?style=for-the-badge&logo=angularjs&logoColor=white" alt="AngularJS 1.6.9" />
-  <img src="https://img.shields.io/badge/JSP-Frontend-111827?style=for-the-badge" alt="JSP frontend" />
-  <img src="https://img.shields.io/badge/H2-In--Memory-111827?style=for-the-badge" alt="H2 database" />
-  <img src="https://img.shields.io/badge/MIT-License-111827?style=for-the-badge" alt="MIT License" />
+  <img src="assets/cinema-showcase-v3.svg" alt="Cinema ticket booking showcase" width="100%" />
 </p>
 
-<h1 align="center">Digital Movie Ticket Portal</h1>
+> 🎟️ **Ticket note:** this is a booking prototype, not a production payment/ticketing platform.
 
-<p align="center">
-  A compact Java full-stack movie booking prototype with show scheduling, theatre filtering, seat availability, and booking validation.
-</p>
+---
 
-<p align="center">
-  <img src="assets/booking-flow.svg" alt="Movie ticket booking flow" width="100%" />
-</p>
-
-## 🎬 What this project actually is
+## 🍿 Ticket contents
 
 The repository is a **Spring Boot 2.7.3 + Java 17** web application backed by **H2** and served through a JSP page. The browser UI uses **AngularJS 1.6.9**, Bootstrap, jQuery, and a small custom stylesheet.
 
