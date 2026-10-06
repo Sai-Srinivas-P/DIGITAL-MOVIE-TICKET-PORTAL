@@ -1,257 +1,374 @@
-# 🎬 **DIGITAL MOVIE TICKET PORTAL**
+<p align="center">
+  <img src="assets/movie-portal-hero.svg" alt="Digital Movie Ticket Portal hero graphic" width="100%" />
+</p>
 
----
+<p align="center">
+  <a href="https://github.com/Sai-Srinivas-P/DIGITAL-MOVIE-TICKET-PORTAL">
+    <img src="https://img.shields.io/badge/status-prototype-18181b?style=for-the-badge&logo=github" alt="Prototype" />
+  </a>
+  <img src="https://img.shields.io/badge/Java-17-18181b?style=for-the-badge&logo=openjdk" alt="Java 17" />
+  <img src="https://img.shields.io/badge/Spring%20Boot-2.7.3-18181b?style=for-the-badge&logo=springboot" alt="Spring Boot" />
+  <img src="https://img.shields.io/badge/H2-in--memory-18181b?style=for-the-badge" alt="H2" />
+  <img src="https://img.shields.io/badge/AngularJS-1.6.9-18181b?style=for-the-badge&logo=angularjs" alt="AngularJS" />
+  <img src="https://img.shields.io/badge/license-MIT-18181b?style=for-the-badge" alt="MIT License" />
+</p>
 
-A beginner-friendly yet professional **Java Full-Stack Project** designed using **Spring Boot** and **ReactJS**, the *Digital Movie Ticket Portal* enables users to seamlessly browse movies, check seat availability, and book tickets online. This system delivers a smooth ticket-booking experience with real-time validations, a responsive UI, and pre-configured sample data for instant execution.
+<h1 align="center">Digital Movie Ticket Portal</h1>
 
----
+<p align="center">
+  A compact Java full-stack movie booking prototype with show scheduling, theatre filtering, seat availability, and booking validation.
+</p>
 
-## 📘 **Overview**
+<p align="center">
+  <img src="assets/booking-flow.svg" alt="Movie ticket booking flow" width="100%" />
+</p>
 
-The **Digital Movie Ticket Portal** is a lightweight, interactive movie ticket booking application where users can book movie tickets based on their preferred theatre, showtime, and seat layout. It is ideal for beginners starting their journey in Java full-stack development using modern frameworks and tools.
+## 🎬 What this project actually is
 
-This project uses an **H2 in-memory database** for fast setup, and users can easily switch to MySQL or any relational database when needed.
+The repository is a **Spring Boot 2.7.3 + Java 17** web application backed by **H2** and served through a JSP page. The browser UI uses **AngularJS 1.6.9**, Bootstrap, jQuery, and a small custom stylesheet.
 
----
+The previous README described the frontend as ReactJS, but **there is no React application in this repository**. The shipped UI is:
 
-## 🚀 **Key Features**
+- `src/main/webapp/templates/index.jsp`
+- `src/main/webapp/js/Booking.js`
+- `src/main/webapp/css/stylesheet.css`
 
-### 🎥 **Movie & Show Management**
+That distinction is important for anyone cloning and running the project.
 
-* Displays all active movies available for booking.
-* Auto-scheduled sample shows for the current day.
-* Real-time status updates for shows:
+## 🍿 Core experience
 
-  * *Completed* — Show end time passed.
-  * *Running* — Show is ongoing and cannot be booked.
-  * *Upcoming* — Tickets open for booking.
+The application follows a straightforward booking journey:
 
-### 🎫 **Ticket Booking**
+1. Load the list of active movies.
+2. Pick a date.
+3. Filter available theatres.
+4. Choose a show time.
+5. Load the show's seat map.
+6. Select available seats.
+7. Submit the reservation.
+8. Reject the booking when the show is no longer bookable or a requested seat has already been reserved.
 
-* Users can select seats based on availability.
-* Validation ensures the user cannot book running or completed shows.
-* Smooth, intuitive ticket booking workflow.
+The browser uses these backend endpoints:
 
-### 📊 **Data Handling**
+| Endpoint | Method | Purpose |
+|---|---|---|
+| `/getactivemovies` | GET | Return active movie names |
+| `/gettheatres` | POST | Find theatres for a movie/date/time |
+| `/fetchtheatresbymovieanddate` | POST | Return show records for a selected theatre |
+| `/fetchseatdtls` | POST | Load seat status for a selected show |
+| `/savedetails` | POST | Validate and reserve selected seats |
 
-* Pre-loaded sample data for movies, theatres, shows, and seat layouts.
-* Uses H2 database for easy local execution.
-* Fully customizable database through `application.properties`.
+## 🎟️ Seat booking
 
-### 🎨 **Modern UI**
+The current UI represents seats using simple color states:
 
-* Clean user interface built with:
+- **White** → available
+- **Grey** → already booked
+- **Red** → selected by the current user
 
-  * ReactJS
-  * HTML & CSS
-  * Bootstrap
-* Responsive and beginner-friendly UI design.
+The frontend lays seats out in rows of **7** and lets the user toggle an available seat between white and red.
 
----
+On submission, the service checks the show status first, then checks every requested seat before saving the updated seat statuses.
 
-## 🛠️ **Tech Stack**
+> **Important limitation:** this is a prototype booking flow, not a transactional ticketing platform. There is no payment integration, authentication layer, booking-history model, ticket entity, or concurrency/locking strategy for simultaneous requests.
 
-### **Backend**
+## ⏱️ Automated show lifecycle
 
-* Spring Boot
-* Java
-* Spring MVC / REST
-* Spring Data JPA
-* H2 Database (default)
+<img src="assets/show-lifecycle.svg" alt="Automated show lifecycle" width="100%" />
 
-### **Frontend**
+`SchedulerSrvc` is annotated with `@EnableScheduling` and executes every **60 seconds**.
 
-* ReactJS
-* HTML
-* CSS
-* Bootstrap
+The scheduler:
 
-### **Tools**
+- seeds the current day's schedule when the stored date changes;
+- creates four movie names: `Movie1` through `Movie4`;
+- creates four theatres: `Theatre1` through `Theatre4`;
+- creates four show start times: `09:00:00`, `13:00:00`, `19:00:00`, `22:00:00`;
+- assigns a default of **25 seats per generated show**;
+- initializes missing seat records;
+- marks shows as running or completed based on the current date/time.
 
-* Git
-* Any preferred IDE (STS, IntelliJ, VS Code)
+The repository also contains a seeded `Movie5` / `Theatre5` record in `data.sql` with a small **15-seat** layout for initial database content.
 
----
+## 🏗️ Architecture
 
-## 🗂️ **Project Architecture**
-
-* **Controller Layer** — REST API endpoints
-* **Service Layer** — Core business logic
-* **Repository Layer** — Database operations
-* **UI Layer** — Frontend views and components
-
----
-
-## 🗄️ **Database Configuration**
-
-### **Default: H2 Database**
-
-```properties
-spring.datasource.url=jdbc:h2:mem:movie_db
-spring.datasource.driverClassName=org.h2.Driver
-spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
-spring.h2.console.enabled=true
+```text
+Browser
+  │
+  │ AngularJS + JSP + Bootstrap
+  ▼
+HomeController / REST Controllers
+  │
+  ▼
+TicketBookingSrvcImpl
+  │
+  ├──────────────┐
+  ▼              ▼
+MovieDescRepo   SeatDtlsRepo
+  │              │
+  └───────┬──────┘
+          ▼
+       H2 Database
+          ▲
+          │
+     SchedulerSrvc
 ```
 
-### **Switching to MySQL**
+### Main layers
 
-```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/movie_db
-spring.datasource.username=your_username
-spring.datasource.password=your_password
+| Layer | Current implementation |
+|---|---|
+| Web/UI | JSP + AngularJS 1.6.9 + Bootstrap + jQuery |
+| Controllers | Spring MVC / REST controllers |
+| Service | `TicketBookingSrvcImpl` |
+| Persistence | Spring Data JPA repositories |
+| Database | H2 in-memory database |
+| Scheduling | Spring `@Scheduled(fixedDelay = 60000)` |
+| Build | Maven Wrapper |
+
+## 🧩 Data model
+
+The main persisted structures are intentionally small:
+
+```text
+movie_desc_mstr
+├── Id
+├── Moviename
+├── Theatrename
+├── Startdate / Starttime
+├── Enddate / Endtime
+├── Seats
+└── Status
+
+seat_dtls_mstr
+├── Id
+├── Moviedescid
+├── Seatno
+└── Status
+
+sch_mstr
+├── id
+└── ldate
 ```
 
----
+A show record in `movie_desc_mstr` is associated with its seats through `Moviedescid`.
 
-## 🗺️ ER Diagram
+There is no separate customer, booking, payment, or ticket table in the current schema.
 
-Below is the Entity-Relationship diagram for the core data model of the **Digital Movie Ticket Portal**. The diagram shows main entities and their relationships: `Customer`, `Booking`, `Show`, `Movie`, `Theatre`, `Seat` and how they connect.
+## 🛠️ Technology stack
 
-> **Mermaid (recommended for GitHub rendering)**
+### Backend
 
-```mermaid
-erDiagram
-    CUSTOMER {
-        long id PK
-        string name
-        string email
-        string phone
-    }
-    BOOKING {
-        long id PK
-        datetime booking_time
-        decimal total_amount
-        string status
-    }
-    SHOW {
-        long id PK
-        datetime start_time
-        datetime end_time
-        string status
-        int available_seats
-    }
-    MOVIE {
-        long id PK
-        string title
-        string genre
-        int duration_minutes
-    }
-    THEATRE {
-        long id PK
-        string name
-        string location
-    }
-    SEAT {
-        long id PK
-        string seat_number
-        string row
-        string type
-    }
+- Java 17
+- Spring Boot 2.7.3
+- Spring Web
+- Spring Data JPA
+- Spring JDBC
+- Spring Scheduling
+- H2
+- Apache Tomcat Jasper
+- PostgreSQL driver included as a runtime dependency
+- Spring Mail dependency included
+- iText / XMLWorker dependencies
+- Apache Commons CSV
+- Apache Velocity
 
-    CUSTOMER ||--o{ BOOKING : makes
-    BOOKING }o--|| SHOW : for
-    SHOW }o--|| MOVIE : is_for
-    SHOW }o--|| THEATRE : at
-    THEATRE ||--o{ SEAT : has
-    BOOKING }o--o{ SEAT : reserves
+### Frontend
+
+- JSP
+- AngularJS 1.6.9
+- Bootstrap
+- jQuery
+- Font Awesome
+- Vanilla JavaScript
+
+### Build & tooling
+
+- Maven Wrapper
+- JUnit 5 / Spring Boot Test
+- Git
+
+## 📁 Repository structure
+
+```text
+DIGITAL-MOVIE-TICKET-PORTAL/
+├── pom.xml
+├── mvnw
+├── mvnw.cmd
+├── LICENSE.md
+├── README.md
+├── assets/
+│   ├── movie-portal-hero.svg
+│   ├── booking-flow.svg
+│   └── show-lifecycle.svg
+└── src/
+    ├── main/
+    │   ├── java/com/portal/movieticketbooking/
+    │   │   ├── controller/
+    │   │   ├── model/
+    │   │   ├── pojo/
+    │   │   ├── repository/
+    │   │   └── service/
+    │   ├── resources/
+    │   │   ├── application.properties
+    │   │   └── data.sql
+    │   └── webapp/
+    │       ├── css/stylesheet.css
+    │       ├── js/Booking.js
+    │       └── templates/index.jsp
+    └── test/
+        └── java/com/portal/movieticketbooking/
+            └── MovieticketbookingApplicationTests.java
 ```
 
-> **ASCII fallback (for environments where Mermaid is not rendered)**
+## 🚀 Run it locally
 
-```
-+-----------+       +----------+       +-------+
-|  CUSTOMER |1 -----*| BOOKING  |* -----1| SHOW  |
-+-----------+       +----------+       +-------+
-      |                                  |  |
-      |                                  |  |
-      |                                  |  +-------1 MOVIE
-      |                                  |          +-------+
-      |                                  |          | MOVIE |
-      |                                  |          +-------+
-      |                                  |
-      |                                  |
-      |                                  *
-      |                                 / \
-      |                                /   \
-      |                               /     \
-      |                              *       *
-+-----------+                  +---------+ +-----+
-|  THEATRE  |1 -------------*  |  SEAT   | | ... |
-+-----------+                  +---------+ +-----+
-```
+### Prerequisites
 
-**Notes on model choices:**
+- **JDK 17**
+- Git
+- A terminal or IDE that can run Maven projects
 
-* `Seat` is linked to a `Theatre` (seat layout belongs to theatre). Availability for a particular show is tracked by show-level availability and individual `Booking` entries that reserve specific seats. Optionally, a `ShowSeat` join entity can be introduced to store seat status per show (e.g., reserved, available, blocked).
-* `Booking` is the transactional entity that links `Customer`, `Show`, and one or more `Seat` records.
+The repository includes Maven Wrapper scripts, so a separate Maven installation is optional.
 
----
-
-## 📦 **Sample Data Details**
-
-The system loads sample data automatically for immediate testing:
-
-* 4 pre-activated movies
-* 4 theatres
-* 4 shows for each theatre (current-day scheduling)
-* Automatic show status updates based on current time
-* Booking restrictions:
-
-  * No booking for *running* or *completed* shows
-
-This creates a realistic and efficient testing environment.
-
----
-
-## ▶️ **How to Run the Application**
-
-### **1️⃣ Clone the Repository**
+### 1. Clone
 
 ```bash
-git clone https://github.com/your-repo-url
-cd digital-movie-ticket-portal
+git clone https://github.com/Sai-Srinivas-P/DIGITAL-MOVIE-TICKET-PORTAL.git
+cd DIGITAL-MOVIE-TICKET-PORTAL
 ```
 
-### **2️⃣ Backend Setup**
+### 2. Start the application
 
-* Make sure **Java 17+** and **Spring Boot** are installed.
-* Open the project in your IDE.
-* Run using:
+Linux / macOS:
 
-  * IDE → Run As → Spring Boot App
-  * OR:
+```bash
+./mvnw spring-boot:run
+```
 
-    ```bash
-    mvn spring-boot:run
-    ```
+Windows:
 
-### **3️⃣ Frontend Setup**
+```bat
+mvnw.cmd spring-boot:run
+```
 
-* Open the frontend folder.
-* Launch using a local server or environment compatible with ReactJS.
+Or run `MovieticketbookingApplication.java` from your IDE.
+
+### 3. Open the application
+
+The controller exposes the main page through:
+
+```text
+/home
+```
+
+Depending on your local Spring Boot port, open:
+
+```text
+http://localhost:8080/home
+```
+
+The project uses an **in-memory H2** database, configured in `src/main/resources/application.properties`.
+
+## 🗄️ Database configuration
+
+Current configuration:
+
+```properties
+spring.h2.console.enabled=true
+spring.datasource.platform=h2
+spring.datasource.url=jdbc:h2:mem:aniket
+spring.jpa.defer-datasource-initialization=true
+```
+
+Because this is an in-memory database:
+
+- data disappears when the application stops;
+- `data.sql` seeds the initial records;
+- the scheduler creates and refreshes daily show data in memory.
+
+For a durable deployment, the application would need a persistent database configuration and a migration strategy.
+
+## 🧪 Testing
+
+The repository currently contains one Spring Boot context test:
+
+```bash
+./mvnw test
+```
+
+The test class is:
+
+`src/test/java/com/portal/movieticketbooking/MovieticketbookingApplicationTests.java`
+
+It currently verifies that the Spring application context loads successfully.
+
+That is **not** a full booking test suite. There are no repository-level, controller-level, seat-concurrency, or end-to-end booking tests in the repository.
+
+## 🔐 What is missing from a production booking system
+
+The largest gap is not the UI. It is the transaction model.
+
+The current `savedetails()` flow checks seat status and then writes updates, but the repository does not show a proper transaction/locking strategy for two users attempting to reserve the same seat at the same time.
+
+For a production-ready system, the next engineering priorities would be:
+
+- authenticated user accounts;
+- persistent booking and ticket entities;
+- database transactions and row-level locking;
+- payment integration;
+- booking cancellation/refund flow;
+- email/SMS ticket delivery;
+- server-side request validation;
+- database migrations;
+- API error contracts;
+- proper automated tests;
+- external configuration for secrets and database credentials;
+- a modern frontend separated from the JSP layer.
+
+## 📈 Sensible upgrade path
+
+```text
+Current prototype
+      │
+      ▼
+Extract service + DTO contracts
+      │
+      ▼
+Add Booking / Customer / Ticket entities
+      │
+      ▼
+Transactional seat reservation
+      │
+      ▼
+Persistent PostgreSQL / MySQL database
+      │
+      ▼
+Authentication + payments
+      │
+      ▼
+Modern frontend + deployment pipeline
+```
+
+That path preserves the useful booking logic while fixing the parts that currently prevent this from being a robust ticketing platform.
+
+## 🤝 Contributing
+
+Keep changes focused and include tests for behavior that affects booking, seat state, scheduling, or API responses.
+
+For larger changes, document the data-model or endpoint impact in the pull request.
+
+## 📜 License
+
+This project is licensed under the **MIT License**. See [`LICENSE.md`](LICENSE.md).
+
+## 👤 Author
+
+**Sai-Srinivas-P**  
+GitHub: <https://github.com/Sai-Srinivas-P>
 
 ---
 
-## 📚 **Ideal For**
-
-* Java full-stack beginners
-* Academic and mini-projects
-* Students learning Spring Boot + ReactJS
-* REST API and UI validation practice
-
----
-
-## 🤝 **Contributing**
-
-Contributions, improvements, and feature requests are welcome.
-
----
-
-## 📝 **License**
-
-This project is licensed under the MIT License.
-
----
-
-
-
+<p align="center">
+  <sub>Documentation rebuilt around the code, data model, frontend assets, and scheduler actually present in this repository.</sub>
+</p>
