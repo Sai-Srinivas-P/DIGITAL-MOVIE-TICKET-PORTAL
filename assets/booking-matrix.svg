@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="300" viewBox="0 0 1100 300">
+<rect width="1100" height="300" rx="22" fill="#080d1d"/>
+<text x="35" y="43" fill="#f7f8fc" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="700">Booking state machine</text>
+<text x="35" y="68" fill="#a8b3c8" font-family="Arial,Helvetica,sans-serif" font-size="13">Matches the current frontend seat colors and backend validation flow.</text>
+<g font-family="Arial,Helvetica,sans-serif">
+<g transform="translate(45 110)"><rect width="185" height="100" rx="18" fill="#0f1a31" stroke="#42d8ad" stroke-width="2"/><text x="22" y="38" fill="#42d8ad" font-weight="700">AVAILABLE</text><text x="22" y="64" fill="#d5dbe7" font-size="13">Seat status = N</text><rect x="22" y="78" width="38" height="14" rx="5" fill="#42d8ad"/></g>
+<path d="M230 160H300" stroke="#536486" stroke-width="4"/><polygon points="300,160 288,153 288,167" fill="#536486"/>
+<g transform="translate(300 110)"><rect width="185" height="100" rx="18" fill="#17162b" stroke="#ff5e76" stroke-width="2"/><text x="22" y="38" fill="#ff5e76" font-weight="700">SELECTED</text><text x="22" y="64" fill="#d5dbe7" font-size="13">UI toggles to red</text><rect x="22" y="78" width="38" height="14" rx="5" fill="#ff5e76"/></g>
+<path d="M485 160H555" stroke="#536486" stroke-width="4"/><polygon points="555,160 543,153 543,167" fill="#536486"/>
+<g transform="translate(555 110)"><rect width="185" height="100" rx="18" fill="#121a2c" stroke="#ff4fa3" stroke-width="2"/><text x="22" y="38" fill="#ff4fa3" font-weight="700">BOOK REQUEST</text><text x="22" y="64" fill="#d5dbe7" font-size="13">POST /savedetails</text></g>
+<path d="M740 160H810" stroke="#536486" stroke-width="4"/><polygon points="810,160 798,153 798,167" fill="#536486"/>
+<g transform="translate(810 110)"><rect width="230" height="100" rx="18" fill="#0f1a31" stroke="#55e6ff" stroke-width="2"/><text x="22" y="38" fill="#55e6ff" font-weight="700">BOOKED / REJECTED</text><text x="22" y="64" fill="#d5dbe7" font-size="13">status Y or error</text><text x="22" y="84" fill="#7f8da8" font-size="12">Show closed → rejected</text></g>
+</g></svg>
