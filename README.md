@@ -11,17 +11,6 @@
   <img src="https://img.shields.io/badge/MIT-License-111827?style=for-the-badge" alt="MIT License" />
 </p>
 
-<p align="center">
-  <a href="https://github.com/Sai-Srinivas-P/DIGITAL-MOVIE-TICKET-PORTAL">
-    <img src="https://img.shields.io/badge/status-prototype-18181b?style=for-the-badge&logo=github" alt="Prototype" />
-  </a>
-  <img src="https://img.shields.io/badge/Java-17-18181b?style=for-the-badge&logo=openjdk" alt="Java 17" />
-  <img src="https://img.shields.io/badge/Spring%20Boot-2.7.3-18181b?style=for-the-badge&logo=springboot" alt="Spring Boot" />
-  <img src="https://img.shields.io/badge/H2-in--memory-18181b?style=for-the-badge" alt="H2" />
-  <img src="https://img.shields.io/badge/AngularJS-1.6.9-18181b?style=for-the-badge&logo=angularjs" alt="AngularJS" />
-  <img src="https://img.shields.io/badge/license-MIT-18181b?style=for-the-badge" alt="MIT License" />
-</p>
-
 <h1 align="center">Digital Movie Ticket Portal</h1>
 
 <p align="center">
