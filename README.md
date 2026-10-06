@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/cinema-showcase-v2.svg" alt="Animated cinema showcase for the Digital Movie Ticket Portal" width="100%" />
+  <img src="assets/cinema-showcase-v3.svg" alt="Animated cinema showcase for the Digital Movie Ticket Portal" width="100%" />
 </p>
 
 <p align="center">
